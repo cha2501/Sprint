@@ -1,0 +1,264 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+  vertical-align: middle;
+  font-family: 'Dancing Script', cursive;
+}
+
+.header:hover {
+  transform: scale(0.97);
+  transition: transform .2s;
+  transform: rotateY(180deg);
+}
+
+
+body {
+  height: 100vh;
+  display: flex;
+  background-image: linear-gradient(#65cedc, #DC8665), url(/img/istockphoto-1180184210-170667a.jpg);
+  color: #fff;
+  margin: 0;
+  font-family: 'Dancing Script', cursive;
+  border: 5px solid #65cedc;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 5%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.column:hover {
+  transform: scale(0.97);
+  transition: transform .2s;
+  transform: rotateY(180deg);
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.controls {
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 100px;
+  left: 150px;
+}
+
+.controls .score {
+  flex-basis: 100%;
+  text-align: center;
+  left: 60px;
+}
+
+.controls .timer {
+  color: #FFF;
+  width: 65px;
+  font-size: 45px;
+  margin-right: 20px;
+}
+
+.control .levels {
+  display: flex;
+}
+
+.controls button[name='levels']{
+  width: 200px;
+  height: 70px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: #FDFD96;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 24px;
+  margin: 0.5px;
+  color: #924244;
+  line-height: 3;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.control-set {
+  display: flex;
+}
+
+.controls button[name='start'] {
+  width: 200px;
+  height: 70px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  margin: 0.5px;
+  background: #36C3C3;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 24px;
+  color: #fff;
+  line-height: 3;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.controls button[name='restart'] {
+  width: 200px;
+  height: 70px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  margin: 0.5px;
+  background: #36C3C3;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 24px;
+  color: #fff;
+  line-height: 3;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+.controls button[name='levels']:hover {
+  background: #924244;
+  font-size: 24px;
+  color: #fff;
+}
+
+.controls button[name='start']:hover {
+  background: #924244;
+}
+
+.controls button[name='restart']:hover {
+  background: #924244;
+}
+
+
+.memory-game {
+  width: 540px;
+  height: 540px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  border: 5px solid   #65cedc;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #FC9483;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.gradient-border {
+  --borderWidth: 10px;
+  margin: 10px;
+  background: #DC8665;
+  position: relative;
+  border: 5px solid   #65cedc;
+  border-radius: var(--borderWidth);
+}
+.gradient-border:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
