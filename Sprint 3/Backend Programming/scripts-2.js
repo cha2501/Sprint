@@ -14,7 +14,7 @@ let firstCard, secondCard, playTime;
 start.addEventListener('click', startGame);
 
 function startGame() {
-  playTime = 50;
+  playTime = 70;
   scoreBoard.textContent = 0;
   score = 0;
 
